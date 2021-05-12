@@ -11,6 +11,7 @@
 		44D16155264C0A8400580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
 		44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1615D264C0A9E00580DAA /* ShipTests.swift */; };
 		44D16165264C0C2500580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
+		44D1616B264C0F7100580DAA /* BattleShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1616A264C0F7100580DAA /* BattleShipTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		44D1615B264C0A9E00580DAA /* BattleShipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D1615D264C0A9E00580DAA /* ShipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipTests.swift; sourceTree = "<group>"; };
 		44D1615F264C0A9E00580DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D1616A264C0F7100580DAA /* BattleShipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleShipTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				44D1615D264C0A9E00580DAA /* ShipTests.swift */,
 				44D1615F264C0A9E00580DAA /* Info.plist */,
+				44D1616A264C0F7100580DAA /* BattleShipTests.swift */,
 			);
 			path = BattleShipsTests;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D16165264C0C2500580DAA /* Ship.swift in Sources */,
+				44D1616B264C0F7100580DAA /* BattleShipTests.swift in Sources */,
 				44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
