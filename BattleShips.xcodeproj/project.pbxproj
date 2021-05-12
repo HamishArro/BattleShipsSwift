@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		44D16148264C059800580DAA /* BattleShips */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BattleShips; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D1614B264C059800580DAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		44D16153264C05CA00580DAA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		44D1613F264C059700580DAA = {
 			isa = PBXGroup;
 			children = (
+				44D16153264C05CA00580DAA /* README.md */,
 				44D1614A264C059800580DAA /* BattleShips */,
 				44D16149264C059800580DAA /* Products */,
 			);
