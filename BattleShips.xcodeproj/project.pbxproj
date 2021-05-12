@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		44D1614C264C059800580DAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1614B264C059800580DAA /* main.swift */; };
+		44D16155264C0A8400580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
+		44D1615E264C0A9E00580DAA /* BattleShipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1615D264C0A9E00580DAA /* BattleShipsTests.swift */; };
+		44D16165264C0C2500580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,10 +29,21 @@
 		44D16148264C059800580DAA /* BattleShips */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BattleShips; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D1614B264C059800580DAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		44D16153264C05CA00580DAA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		44D16154264C0A8400580DAA /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		44D1615B264C0A9E00580DAA /* BattleShipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44D1615D264C0A9E00580DAA /* BattleShipsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleShipsTests.swift; sourceTree = "<group>"; };
+		44D1615F264C0A9E00580DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		44D16145264C059700580DAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D16158264C0A9E00580DAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,6 +58,7 @@
 			children = (
 				44D16153264C05CA00580DAA /* README.md */,
 				44D1614A264C059800580DAA /* BattleShips */,
+				44D1615C264C0A9E00580DAA /* BattleShipsTests */,
 				44D16149264C059800580DAA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				44D16148264C059800580DAA /* BattleShips */,
+				44D1615B264C0A9E00580DAA /* BattleShipsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,8 +76,18 @@
 			isa = PBXGroup;
 			children = (
 				44D1614B264C059800580DAA /* main.swift */,
+				44D16154264C0A8400580DAA /* Ship.swift */,
 			);
 			path = BattleShips;
+			sourceTree = "<group>";
+		};
+		44D1615C264C0A9E00580DAA /* BattleShipsTests */ = {
+			isa = PBXGroup;
+			children = (
+				44D1615D264C0A9E00580DAA /* BattleShipsTests.swift */,
+				44D1615F264C0A9E00580DAA /* Info.plist */,
+			);
+			path = BattleShipsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +110,23 @@
 			productReference = 44D16148264C059800580DAA /* BattleShips */;
 			productType = "com.apple.product-type.tool";
 		};
+		44D1615A264C0A9E00580DAA /* BattleShipsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44D16160264C0A9E00580DAA /* Build configuration list for PBXNativeTarget "BattleShipsTests" */;
+			buildPhases = (
+				44D16157264C0A9E00580DAA /* Sources */,
+				44D16158264C0A9E00580DAA /* Frameworks */,
+				44D16159264C0A9E00580DAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BattleShipsTests;
+			productName = BattleShipsTests;
+			productReference = 44D1615B264C0A9E00580DAA /* BattleShipsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -94,6 +137,9 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					44D16147264C059700580DAA = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					44D1615A264C0A9E00580DAA = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -112,9 +158,20 @@
 			projectRoot = "";
 			targets = (
 				44D16147264C059700580DAA /* BattleShips */,
+				44D1615A264C0A9E00580DAA /* BattleShipsTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44D16159264C0A9E00580DAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44D16144264C059700580DAA /* Sources */ = {
@@ -122,6 +179,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D1614C264C059800580DAA /* main.swift in Sources */,
+				44D16155264C0A8400580DAA /* Ship.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44D16157264C0A9E00580DAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D16165264C0C2500580DAA /* Ship.swift in Sources */,
+				44D1615E264C0A9E00580DAA /* BattleShipsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +332,42 @@
 			};
 			name = Release;
 		};
+		44D16161264C0A9E00580DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HPP6GNA63;
+				INFOPLIST_FILE = BattleShipsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Arro.BattleShipsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		44D16162264C0A9E00580DAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2HPP6GNA63;
+				INFOPLIST_FILE = BattleShipsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Arro.BattleShipsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -282,6 +385,15 @@
 			buildConfigurations = (
 				44D16150264C059800580DAA /* Debug */,
 				44D16151264C059800580DAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44D16160264C0A9E00580DAA /* Build configuration list for PBXNativeTarget "BattleShipsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44D16161264C0A9E00580DAA /* Debug */,
+				44D16162264C0A9E00580DAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
