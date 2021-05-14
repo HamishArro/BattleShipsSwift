@@ -11,7 +11,9 @@ You'll work alone, and you'll also review your own code so you can practice refl
 ## User stories / planning
 ### Key
 Methods : **
+
 Values : --
+
 ordered in priority.
 
 ```
