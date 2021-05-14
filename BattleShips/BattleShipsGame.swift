@@ -10,12 +10,18 @@ import Foundation
 class BattleShipsGame {
     var grid: [Int: [Character?]] = [1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[]]
     
-    func placeShip(_ number: Int, _ char: Character, _ ship: Ship) throws {
+    func placeShip(_ number: Int, _ character: Character, _ ship: Ship) throws {
+        var index = number
+        var locations: [(num: Int, char: Character)] = []
         for _ in 1...ship.size {
-            if grid[number]!.contains(char) {
-                
+            if grid[index]!.contains(character) {
+                throw GameError.slotTaken
+            } else {
+                locations.append((num: number, char: character))
             }
+            index += 1
         }
+        
     }
     
 }
