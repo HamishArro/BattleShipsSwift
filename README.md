@@ -35,6 +35,7 @@ I would like to *place a -ship- in a board location*
 ```
 []location = "2A"
 []placeShip(ship: Ship, location: String)
+- grid 8 x 8
 ```
 As a player
 So that I can have a coherent game

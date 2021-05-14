@@ -11,7 +11,8 @@
 		44D16155264C0A8400580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
 		44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1615D264C0A9E00580DAA /* ShipTests.swift */; };
 		44D16165264C0C2500580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
-		44D1616B264C0F7100580DAA /* BattleShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1616A264C0F7100580DAA /* BattleShipTests.swift */; };
+		44D1619B264EF6A200580DAA /* BattleShipsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1619A264EF6A200580DAA /* BattleShipsGame.swift */; };
+		44D161B3264EF75C00580DAA /* BattleShipsGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D161B2264EF75C00580DAA /* BattleShipsGameTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +35,8 @@
 		44D1615B264C0A9E00580DAA /* BattleShipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BattleShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D1615D264C0A9E00580DAA /* ShipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipTests.swift; sourceTree = "<group>"; };
 		44D1615F264C0A9E00580DAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44D1616A264C0F7100580DAA /* BattleShipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleShipTests.swift; sourceTree = "<group>"; };
+		44D1619A264EF6A200580DAA /* BattleShipsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleShipsGame.swift; sourceTree = "<group>"; };
+		44D161B2264EF75C00580DAA /* BattleShipsGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleShipsGameTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				44D1614B264C059800580DAA /* main.swift */,
 				44D16154264C0A8400580DAA /* Ship.swift */,
+				44D1619A264EF6A200580DAA /* BattleShipsGame.swift */,
 			);
 			path = BattleShips;
 			sourceTree = "<group>";
@@ -87,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				44D1615D264C0A9E00580DAA /* ShipTests.swift */,
+				44D161B2264EF75C00580DAA /* BattleShipsGameTests.swift */,
 				44D1615F264C0A9E00580DAA /* Info.plist */,
-				44D1616A264C0F7100580DAA /* BattleShipTests.swift */,
 			);
 			path = BattleShipsTests;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				44D1614C264C059800580DAA /* main.swift in Sources */,
 				44D16155264C0A8400580DAA /* Ship.swift in Sources */,
+				44D1619B264EF6A200580DAA /* BattleShipsGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,8 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D16165264C0C2500580DAA /* Ship.swift in Sources */,
-				44D1616B264C0F7100580DAA /* BattleShipTests.swift in Sources */,
 				44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */,
+				44D161B3264EF75C00580DAA /* BattleShipsGameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
