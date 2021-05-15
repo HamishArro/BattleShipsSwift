@@ -21,7 +21,9 @@ class BattleShipsGame {
             }
             index += 1
         }
-        
+        for location in locations {
+            grid[location.num]!.append(location.char)
+        }
     }
     
 }
