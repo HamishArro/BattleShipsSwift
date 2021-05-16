@@ -9,7 +9,25 @@ import XCTest
 @testable import BattleShips
 
 class BattleShipsGameTests: XCTestCase {
+    var sut: BattleShipsGame!
     
+    override func setUpWithError() throws {
+        sut = BattleShipsGame()
+        continueAfterFailure = false
+    }
+
+    override func tearDownWithError() throws {
+        sut = nil
+    }
     
+    func testMakeLocationWhenNorth() {
+        let smallShip = Ship(name: "Dingy", size: 1, direction: true)
+        XCTAssertEqual(try sut.makeLocation("2A", smallShip), "3A")
+    }
+    
+    func testMakeLocationWhenEast() {
+        let smallShip = Ship(name: "Dingy", size: 1, direction: false)
+        XCTAssertEqual(try sut.makeLocation("2A", smallShip), "2B")
+    }
 
 }

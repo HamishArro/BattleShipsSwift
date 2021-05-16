@@ -11,6 +11,7 @@ struct Ship {
     var name: String!
     var size: Int!
     var direction: Bool!
+    var locations: [String] = []
     
     init(name: String, size: Int, direction: Bool) {
         self.name = name
