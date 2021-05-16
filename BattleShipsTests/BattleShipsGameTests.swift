@@ -28,6 +28,14 @@ class BattleShipsGameTests: XCTestCase {
     func testMakeLocationWhenEast() {
         let smallShip = Ship(name: "Dingy", size: 1, direction: false)
         XCTAssertEqual(try sut.makeLocation("2A", smallShip), "2B")
+        XCTAssertEqual(try sut.makeLocation("2G", smallShip), "2H")
     }
+    
+    func testThrowsErrorWhenH() throws {
+        let smallShip = Ship(name: "Dingy", size: 1, direction: false)
+        XCTAssertThrowsError(try sut.makeLocation("2H", smallShip))
+        XCTAssertThrowsError(try sut.makeLocation("3H", smallShip), "Unable to create location", { (errorThrown) in
+                                XCTAssertEqual(errorThrown as? GameError, GameError.locationError)
+    })}
 
 }

@@ -28,7 +28,13 @@ class BattleShipsGame {
     
     func makeLocation(_ location: String, _ ship: Ship) throws -> String {
         let components = Array(location).map { String($0) }
-        if ship.direction { return String(Int(components[0])! + 1) + components[1] } else { throw GameError.locationError }
+        let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
+        if ship.direction { return String(Int(components[0])! + 1) + components[1] } else {
+            for (index, letter) in letterSet.enumerated() { if letter == components[1] && index != letterSet.count - 1 {
+                return components[0] + letterSet[index + 1]
+            } }
+        }
+        throw GameError.locationError
     }
     
 }
