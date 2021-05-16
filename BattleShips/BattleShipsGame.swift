@@ -21,10 +21,10 @@ class BattleShipsGame {
         var location = location
         var locations: [String] = []
         var place = true
-        for _ in 1...pendingShip.size {
+        for iteration in 1...pendingShip.size {
             for ship in grid { if ship.locations.contains(location) { place = false } }
             locations.append(location)
-            location = try makeLocation(location, pendingShip)
+            if iteration != pendingShip.size { location = try makeLocation(location, pendingShip) }
         }
         if place { return locations } else { throw GameError.slotTaken }
     }
