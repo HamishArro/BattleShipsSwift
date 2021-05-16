@@ -11,10 +11,13 @@ class BattleShipsGame {
     var playerOneGrid: [Ship] = []
     
     func placeShip(_ location: String, _ ship: Ship, _ grid: [Ship]) throws {
-//        var ship.locations = try checkLocation(location, ship, grid)
+        var ship = ship
+        var grid = grid
+        ship.locations = try checkLocations(location, ship, grid)
+        grid.append(ship)
     }
     
-    func checkLocation(_ location: String, _ pendingShip: Ship, _ grid: [Ship]) throws -> [String] {
+    func checkLocations(_ location: String, _ pendingShip: Ship, _ grid: [Ship]) throws -> [String] {
         var location = location
         var locations: [String] = []
         var place = true
@@ -29,7 +32,10 @@ class BattleShipsGame {
     func makeLocation(_ location: String, _ ship: Ship) throws -> String {
         let components = Array(location).map { String($0) }
         let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
-        if ship.direction { return String(Int(components[0])! + 1) + components[1] } else {
+        if ship.direction {
+            if Int(components[0])! != 8 { return String(Int(components[0])! + 1) + components[1] }
+            else { throw GameError.locationError }
+        } else {
             for (index, letter) in letterSet.enumerated() { if letter == components[1] && index != letterSet.count - 1 {
                 return components[0] + letterSet[index + 1]
             } }
