@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		44AD41D12651C28000C6A479 /* BattleShipsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1619A264EF6A200580DAA /* BattleShipsGame.swift */; };
-		44AD41D22651C28900C6A479 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1614B264C059800580DAA /* main.swift */; };
 		44D1614C264C059800580DAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1614B264C059800580DAA /* main.swift */; };
 		44D16155264C0A8400580DAA /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D16154264C0A8400580DAA /* Ship.swift */; };
 		44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D1615D264C0A9E00580DAA /* ShipTests.swift */; };
@@ -196,7 +195,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44AD41D22651C28900C6A479 /* main.swift in Sources */,
 				44AD41D12651C28000C6A479 /* BattleShipsGame.swift in Sources */,
 				44D16165264C0C2500580DAA /* Ship.swift in Sources */,
 				44D1615E264C0A9E00580DAA /* ShipTests.swift in Sources */,

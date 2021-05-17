@@ -31,7 +31,7 @@ class BattleShipsGameTests: XCTestCase {
         smallShip.direction = true
         XCTAssertThrowsError(try sut.makeLocation("8B", smallShip))
         XCTAssertThrowsError(try sut.makeLocation("8A", smallShip), "Unable to create location", { (errorThrown) in
-                                XCTAssertEqual(errorThrown as? GameError, GameError.locationError)
+                                XCTAssertEqual(errorThrown as? BattleShipsError, BattleShipsError.locationError)
     })}
     
     func testMakeLocationWhenEast() {
@@ -46,7 +46,7 @@ class BattleShipsGameTests: XCTestCase {
         smallShip.direction = false
         XCTAssertThrowsError(try sut.makeLocation("2H", smallShip))
         XCTAssertThrowsError(try sut.makeLocation("3H", smallShip), "Unable to create location", { (errorThrown) in
-                                XCTAssertEqual(errorThrown as? GameError, GameError.locationError)
+                                XCTAssertEqual(errorThrown as? BattleShipsError, BattleShipsError.locationError)
     })}
     
     func testCheckOnEmptyGrid() {
@@ -62,7 +62,7 @@ class BattleShipsGameTests: XCTestCase {
         smallShip.direction = false
         XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]))
         XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]), "Slot is already in use", { (errorThrown) in
-                                XCTAssertEqual(errorThrown as? GameError, GameError.slotTaken)})
+                                XCTAssertEqual(errorThrown as? BattleShipsError, BattleShipsError.slotTaken)})
     }
     
     func testCheckEdgeNorth() {

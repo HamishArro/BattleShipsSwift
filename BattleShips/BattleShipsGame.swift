@@ -26,7 +26,7 @@ class BattleShipsGame {
             locations.append(location)
             if iteration != pendingShip.size { location = try makeLocation(location, pendingShip) }
         }
-        if place { return locations } else { throw GameError.slotTaken }
+        if place { return locations } else { throw BattleShipsError.slotTaken }
     }
     
     func makeLocation(_ location: String, _ ship: Ship) throws -> String {
@@ -34,23 +34,23 @@ class BattleShipsGame {
         let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
         if ship.direction! {
             if Int(components[0])! != 8 { return String(Int(components[0])! + 1) + components[1] }
-            else { throw GameError.locationError }
+            else { throw BattleShipsError.locationError }
         } else {
             for (index, letter) in letterSet.enumerated() { if letter == components[1] && index != letterSet.count - 1 {
                 return components[0] + letterSet[index + 1]
             } }
         }
-        throw GameError.locationError
+        throw BattleShipsError.locationError
     }
     
 }
 
-enum GameError : Error {
+enum BattleShipsError : Error {
     case slotTaken
     case locationError
 }
 
-extension GameError : LocalizedError {
+extension BattleShipsError : LocalizedError {
     var errorDescription: String? {
         switch self {
             case .slotTaken:
