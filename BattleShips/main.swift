@@ -14,7 +14,7 @@ print("Welcome to battle ships! Please enter your name to begin.")
 let name = String(readLine()!)
 print("Hello \(name), the rules are as follows.\n\n- Players take turns firing shots to attempt to hit the opponent's enemy ships. \n- On your turn, call out a number (1 - 8) and a letter (A - H) that identifies a row and column on your target grid. \n- You will be altered with a 'Hit' or 'Miss' depending on the outcome of the shot.\n")
 
-try placeAllShips()
+placeAllShips()
 computerChoice()
 
 
@@ -31,12 +31,12 @@ func randomPlace(_ ship: Ship, _ index: Int) {
     } catch { randomPlace(ship, index) }
 }
 
-func placeAllShips() throws {
+func placeAllShips() {
     for (index, ship) in ships.enumerated() {
         print("\(ship.name!)\nSize: \(ship.size!)\n\nWhere should it face, north or east?")
         getDriection(ship)
         print("Where do you want to put it?")
-        try doPlace(index)
+        doPlace(index)
     }
 }
 
@@ -49,15 +49,16 @@ func getDriection(_ ship: Ship) {
     }
 }
 
-func doPlace(_ index: Int) throws {
+func doPlace(_ index: Int) {
     do { try game.placeShip(String(readLine()!), &ships[index], &game.playerOneGrid)
     } catch BattleShipsError.slotTaken {
         print("Cannot place in slot that is in use, enter again.")
         try doPlace(index)
-    } catch BattleShipsError.locationError {
-        print("Ship goes over the allowed boundary, enter again.")
+    } catch BattleShipsError.locationError { print("Ship goes over the allowed boundary, enter again.")
         try doPlace(index)
-    } catch { throw GameError.doPlaceError }
+    } catch { print("Error. Try again.")
+        doPlace(index)
+    }
 }
 
 enum GameError: Error {
