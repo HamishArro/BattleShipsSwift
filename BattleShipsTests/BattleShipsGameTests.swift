@@ -20,6 +20,28 @@ class BattleShipsGameTests: XCTestCase {
         sut = nil
     }
     
+    func testFireHit() {
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.locations = ["1A", "2A"]
+        sut.playerTwoGrid = [mediumShip]
+        XCTAssertEqual(sut.fire("1A", &sut.playerTwoGrid), "Hit")
+    }
+    
+    func testFireSink() {
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.locations = ["1A", "2A"]
+        sut.playerTwoGrid = [mediumShip]
+        sut.fire("1A", &sut.playerTwoGrid)
+        XCTAssertEqual(sut.fire("1A", &sut.playerTwoGrid), "Sunk ship!")
+    }
+    
+    func testFireMiss() {
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.locations = ["1A", "2A"]
+        sut.playerTwoGrid = [mediumShip]
+        XCTAssertEqual(sut.fire("3A", &sut.playerTwoGrid), "Miss")
+    }
+    
     func testMakeLocationWhenNorth() {
         let smallShip = Ship(name: "Dingy", size: 1)
         smallShip.direction = true

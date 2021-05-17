@@ -13,6 +13,12 @@ class BattleShipsGame {
     var gameOver = false
     let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
     
+    func fire(_ location: String, _ grid: inout [Ship]) -> String {
+        var output = "Miss"
+        for ship in grid { if ship.locations.contains(location) { output = ship.hit() } }
+        return output
+    }
+    
     func placeShip(_ location: String, _ ship: inout Ship, _ grid: inout [Ship]) throws {
         ship.locations = try checkLocations(location, ship, grid)
         grid.append(ship)
