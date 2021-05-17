@@ -18,8 +18,18 @@ print("Hello \(name), the rules are as follows.\n\n- Players take turns firing s
 while !game.gameOver {
     try placeAllShips()
     computerChoice()
-    print(game.playerOneGrid)
-    print(game.playerTwoGrid)
+    for ship in game.playerOneGrid {
+        print(ship.name)
+        for location in ship.locations {
+            print(location)
+        }
+    }
+    for ship in game.playerTwoGrid {
+        print(ship.name)
+        for location in ship.locations {
+            print(location)
+        }
+    }
     game.gameOver = true
 }
 

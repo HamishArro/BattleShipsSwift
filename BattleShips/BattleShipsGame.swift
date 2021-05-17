@@ -18,7 +18,7 @@ class BattleShipsGame {
     }
     
     func checkLocations(_ location: String, _ pendingShip: Ship, _ grid: [Ship]) throws -> [String] {
-        var location = location
+        var location = location.uppercased()
         var locations: [String] = []
         var place = true
         for iteration in 1...pendingShip.size {
