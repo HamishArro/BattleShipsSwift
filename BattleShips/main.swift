@@ -9,17 +9,14 @@ import Foundation
 var game = BattleShipsGame()
 var ships = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
 var computerShips = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
-let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 print("Welcome to battle ships! Please enter your name to begin.")
 let name = String(readLine()!)
 print("Hello \(name), the rules are as follows.\n\n- Players take turns firing shots to attempt to hit the opponent's enemy ships. \n- On your turn, call out a letter (A - H) and a number (1 - 8) that identifies a row and column on your target grid. \n- You will be altered with a 'Hit' or 'Miss' depending on the outcome of the shot.\n")
 
-while !game.gameOver {
-    try placeAllShips()
-    computerChoice()
-    game.gameOver = true
-}
+try placeAllShips()
+computerChoice()
+
 
 func computerChoice() {
     for (index, ship) in computerShips.enumerated() {
@@ -30,7 +27,7 @@ func computerChoice() {
 func randomPlace(_ ship: Ship, _ index: Int) {
     do {
         ship.direction = Bool.random()
-        try game.placeShip(String(Int.random(in: 1...8)) + String(letterSet.randomElement()!), &computerShips[index], &game.playerTwoGrid)
+        try game.placeShip(String(Int.random(in: 1...8)) + String(game.letterSet.randomElement()!), &computerShips[index], &game.playerTwoGrid)
     } catch { randomPlace(ship, index) }
 }
 
