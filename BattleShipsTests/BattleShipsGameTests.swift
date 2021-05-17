@@ -51,7 +51,7 @@ class BattleShipsGameTests: XCTestCase {
     }
     
     func testPlaceOnTakenSlots() throws {
-        var mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
         mediumShip.locations = ["1A", "2A"]
         let smallShip = Ship(name: "Dingy", size: 1, direction: false)
         XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]))
@@ -70,9 +70,10 @@ class BattleShipsGameTests: XCTestCase {
     }
     
     func testPlaceShip() throws {
-        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
-        try sut.placeShip("1A", mediumShip, &sut.playerTwoGrid)
+        var mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        try sut.placeShip("1A", &mediumShip, &sut.playerTwoGrid)
         XCTAssertEqual(sut.playerTwoGrid[0].name, mediumShip.name)
+        XCTAssertEqual(sut.playerTwoGrid[0].locations, ["1A","2A"])
     }
 
 }

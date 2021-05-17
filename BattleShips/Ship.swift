@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ship {
+class Ship {
     var name: String!
     var size: Int!
     var direction: Bool!

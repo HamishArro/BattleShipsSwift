@@ -11,8 +11,7 @@ class BattleShipsGame {
     var playerOneGrid: [Ship] = []
     var playerTwoGrid: [Ship] = []
     
-    func placeShip(_ location: String, _ ship: Ship, _ grid: inout [Ship]) throws {
-        var ship = ship
+    func placeShip(_ location: String, _ ship: inout Ship, _ grid: inout [Ship]) throws {
         ship.locations = try checkLocations(location, ship, grid)
         grid.append(ship)
     }

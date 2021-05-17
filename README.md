@@ -35,21 +35,22 @@ As a player
 So that I can prepare for the game
 I would like to *place a -ship- in a board location*
 ```
-[]location = "2A"
-[]placeShip(ship: Ship, location: String)
+[x]location = "2A"
+[x]placeShip(ship: Ship, location: String)
 - grid 8 x 8
 ```
 As a player
 So that I can have a coherent game
 I would like *ships to be constrained to be on the board*
 ```
-[]checkPlacement()
+[x]checkPlacement()
 - place inside of placeShip
 ```
 As a player
 So that I can have a coherent game
 I would like *ships to be constrained not to overlap*
 ```
+[x]
 - should be dealt with in checkPlacement()
 - maybe seperated
 ```
