@@ -68,5 +68,11 @@ class BattleShipsGameTests: XCTestCase {
         let mediumShip = Ship(name: "Rib", size: 2, direction: false)
         XCTAssertEqual(try sut.checkLocations("1G", mediumShip, []), ["1G", "1H"])
     }
+    
+    func testPlaceShip() throws {
+        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        try sut.placeShip("1A", mediumShip, &sut.playerTwoGrid)
+        XCTAssertEqual(sut.playerTwoGrid[0].name, mediumShip.name)
+    }
 
 }
