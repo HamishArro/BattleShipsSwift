@@ -11,7 +11,8 @@ import XCTest
 class ShipTests: XCTestCase {
 
     func testShip() {
-        let smallShip = Ship(name: "Dingy", size: 1, direction: true)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = true
         XCTAssertEqual(smallShip.name, "Dingy")
         XCTAssertEqual(smallShip.size, 1)
         XCTAssertEqual(smallShip.direction, true)

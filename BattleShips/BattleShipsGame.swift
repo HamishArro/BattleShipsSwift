@@ -10,6 +10,7 @@ import Foundation
 class BattleShipsGame {
     var playerOneGrid: [Ship] = []
     var playerTwoGrid: [Ship] = []
+    var gameOver = false
     
     func placeShip(_ location: String, _ ship: inout Ship, _ grid: inout [Ship]) throws {
         ship.locations = try checkLocations(location, ship, grid)
@@ -31,7 +32,7 @@ class BattleShipsGame {
     func makeLocation(_ location: String, _ ship: Ship) throws -> String {
         let components = Array(location).map { String($0) }
         let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
-        if ship.direction {
+        if ship.direction! {
             if Int(components[0])! != 8 { return String(Int(components[0])! + 1) + components[1] }
             else { throw GameError.locationError }
         } else {

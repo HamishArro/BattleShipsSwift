@@ -21,56 +21,65 @@ class BattleShipsGameTests: XCTestCase {
     }
     
     func testMakeLocationWhenNorth() {
-        let smallShip = Ship(name: "Dingy", size: 1, direction: true)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = true
         XCTAssertEqual(try sut.makeLocation("2A", smallShip), "3A")
     }
     
     func testThrowsErrorWhen8() throws {
-        let smallShip = Ship(name: "Dingy", size: 1, direction: true)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = true
         XCTAssertThrowsError(try sut.makeLocation("8B", smallShip))
         XCTAssertThrowsError(try sut.makeLocation("8A", smallShip), "Unable to create location", { (errorThrown) in
                                 XCTAssertEqual(errorThrown as? GameError, GameError.locationError)
     })}
     
     func testMakeLocationWhenEast() {
-        let smallShip = Ship(name: "Dingy", size: 1, direction: false)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = false
         XCTAssertEqual(try sut.makeLocation("2A", smallShip), "2B")
         XCTAssertEqual(try sut.makeLocation("2G", smallShip), "2H")
     }
     
     func testThrowsErrorWhenH() throws {
-        let smallShip = Ship(name: "Dingy", size: 1, direction: false)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = false
         XCTAssertThrowsError(try sut.makeLocation("2H", smallShip))
         XCTAssertThrowsError(try sut.makeLocation("3H", smallShip), "Unable to create location", { (errorThrown) in
                                 XCTAssertEqual(errorThrown as? GameError, GameError.locationError)
     })}
     
     func testCheckOnEmptyGrid() {
-        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.direction = true
         XCTAssertEqual(try sut.checkLocations("1A", mediumShip, []), ["1A", "2A"])
     }
     
     func testPlaceOnTakenSlots() throws {
-        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
-        let smallShip = Ship(name: "Dingy", size: 1, direction: false)
+        let smallShip = Ship(name: "Dingy", size: 1)
+        smallShip.direction = false
         XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]))
         XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]), "Slot is already in use", { (errorThrown) in
                                 XCTAssertEqual(errorThrown as? GameError, GameError.slotTaken)})
     }
     
     func testCheckEdgeNorth() {
-        let mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.direction = true
         XCTAssertEqual(try sut.checkLocations("7A", mediumShip, []), ["7A", "8A"])
     }
     
     func testCheckEdgeEast() {
-        let mediumShip = Ship(name: "Rib", size: 2, direction: false)
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.direction = false
         XCTAssertEqual(try sut.checkLocations("1G", mediumShip, []), ["1G", "1H"])
     }
     
     func testPlaceShip() throws {
-        var mediumShip = Ship(name: "Rib", size: 2, direction: true)
+        var mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.direction = true
         try sut.placeShip("1A", &mediumShip, &sut.playerTwoGrid)
         XCTAssertEqual(sut.playerTwoGrid[0].name, mediumShip.name)
         XCTAssertEqual(sut.playerTwoGrid[0].locations, ["1A","2A"])
