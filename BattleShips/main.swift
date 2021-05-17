@@ -7,7 +7,7 @@
 
 import Foundation
 var game = BattleShipsGame()
-let ships = [Ship(name: "Dingy", size: 2)]
+let ships = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
 
 print("Welcome to battle ships! Please enter your name to begin.")
 let name = readLine()
