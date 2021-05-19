@@ -4,14 +4,13 @@
 //
 //  Created by Hamish Arro on 14/05/2021.
 //
-
+let LetterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
 import Foundation
 
 class Board {
     var grid: [Ship] = []
     var fireLog: [String: String] = [:]
     var gameOver = false
-    let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
     
     func fire(_ location: String) throws -> String {
         var output = "Miss"
@@ -29,7 +28,7 @@ class Board {
         if components.count != 2 { throw BattleShipsError.locationError }
         guard let number = Int(components[0]) else { throw BattleShipsError.locationError }
         let letter = components[1]
-        if (number >= 1 && number <= 8) && letterSet.contains(letter) { return location }
+        if (number >= 1 && number <= 8) && LetterSet.contains(letter) { return location }
         else {throw BattleShipsError.locationError }
     }
     
@@ -53,7 +52,7 @@ class Board {
     func makeLocation(_ location: String, _ ship: Ship) throws -> String {
         let components = Array(location).map { String($0) }
         if ship.direction! { if Int(components[0])! != 8 { return String(Int(components[0])! + 1) + components[1] } else { throw BattleShipsError.locationError }
-        } else { for (index, letter) in letterSet.enumerated() { if letter == components[1] && index != letterSet.count - 1 { return components[0] + letterSet[index + 1]} }
+        } else { for (index, letter) in LetterSet.enumerated() { if letter == components[1] && index != LetterSet.count - 1 { return components[0] + LetterSet[index + 1]} }
         }
         throw BattleShipsError.locationError
     }

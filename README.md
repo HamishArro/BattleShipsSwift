@@ -64,14 +64,14 @@ As a player
 So that I can win the game
 I would like to be able to *fire at my opponent's board*
 ```
-[]fire(location)
+[x]fire(location)
 - when game starts
 ```
 As a player
 So that I can refine my strategy
 I would like to *know when I have sunk an opponent's ship*
 ```
-[]print("Ship sunk \(ship.name)")
+[x]print("Ship sunk")
 ```
 As a player
 So that I know when to finish playing

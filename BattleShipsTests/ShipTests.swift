@@ -18,7 +18,7 @@ class ShipTests: XCTestCase {
         XCTAssertEqual(smallShip.direction, true)
     }
     
-    func testFire() {
+    func testHit() {
         let smallShip = Ship(name: "Dingy", size: 1)
         smallShip.locations = ["1A","2A"]
         XCTAssertEqual(smallShip.hit("1A"), "Hit")

@@ -17,29 +17,27 @@ print("Welcome to battle ships! Please enter your name to begin.")
 let name = String(readLine()!)
 print("Hello \(name), the rules are as follows.\n\n- Players take turns firing shots to attempt to hit the opponent's enemy ships. \n- On your turn, call out a number (1 - 8) and a letter (A - H) that identifies a row and column on your target grid. \n- You will be altered with a 'Hit' or 'Miss' depending on the outcome of the shot.\n")
 
-//placeAllShips()
+placeAllShips()
 computerChoice()
-for ship in computer.grid {
-    print(ship.locations)
-}
 playGame()
 
 func playGame() {
     while !computer.gameOver && !player.gameOver {
         print("Where would you like to fire?")
         getUserChoice()
-        try getComputerChoice()
+        getComputerChoice()
     }
 }
 
-func getComputerChoice() throws {
-    let result = try player.fire(randomLocation())
+func getComputerChoice() {
+    do { let result = try player.fire(randomLocation())
     print("Enemy \(result)")
+    } catch { getComputerChoice() }
 }
 
 func getUserChoice() {
     do { print(try computer.fire(String(readLine()!)))
-    } catch
+    } catch {
         print("Invaild location, enter again.")
         getUserChoice()
     }
@@ -59,7 +57,7 @@ func computerPlace(_ ship: Ship, _ index: Int) {
 }
 
 func randomLocation() -> String {
-    return String(Int.random(in: 1...8)) + String(game.letterSet.randomElement()!)
+    return String(Int.random(in: 1...8)) + String(LetterSet.randomElement()!)
 }
 
 func placeAllShips() {

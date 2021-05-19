@@ -22,10 +22,9 @@ class BattleShipsGameTests: XCTestCase {
     
     func testGameOver() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
-        mediumShip.locations = ["1A", "2A"]
+        mediumShip.locations = ["1A"]
         sut.grid = [mediumShip]
-        try sut.fire("1A")
-        try sut.fire("2A")
+        let _ = try sut.fire("1A")
         XCTAssertTrue(sut.gameOver)
     }
     
@@ -51,7 +50,7 @@ class BattleShipsGameTests: XCTestCase {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.grid = [mediumShip]
-        try sut.fire("1A")
+        let _ = try sut.fire("1A")
         XCTAssertEqual(try sut.fire("2A"), "Sunk ship!")
     }
     
