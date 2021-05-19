@@ -78,7 +78,7 @@ So that I know when to finish playing
 I would like to *know when I have won or lost*
 ```
 - game ends
-print("who won")
+[x]print("who won")
 ```
 As a player
 So that I can consider my next shot
@@ -86,6 +86,7 @@ I would like to be *able to see my hits and misses so far*
 ```
 []fireLog: [String]
 - could be intergrated into ships, maybe board should be the ultimate array/ class
+- not completed how asked however i believe the solution intergrated is better as a user will never fire in the same place twice.
 ```
 As a player
 So that I can play against a human opponent

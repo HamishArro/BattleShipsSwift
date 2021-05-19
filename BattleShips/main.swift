@@ -20,6 +20,7 @@ print("Hello \(name), the rules are as follows.\n\n- Players take turns firing s
 placeAllShips()
 computerChoice()
 playGame()
+
 print(!player.gameOver ? "Well done \(name), you've won!" : "Game over! Computer won!")
 
 func playGame() {
@@ -40,7 +41,13 @@ func getComputerChoice() {
 func getUserChoice() {
     do { let result = try computer.fire(String(readLine()!))
         print(result)
-        if result != "Miss" { getUserChoice() }
+        if result != "Miss" {
+            print("Well done! fire again.")
+            getUserChoice()
+        }
+    } catch BattleShipsError.alreadyFiredHere {
+        print("You've already fired here, try again.")
+        getUserChoice()
     } catch {
         print("Invaild location, enter again.")
         getUserChoice()

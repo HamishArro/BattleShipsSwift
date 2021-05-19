@@ -20,6 +20,14 @@ class BattleShipsGameTests: XCTestCase {
         sut = nil
     }
     
+    func testSameShot() throws {
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.locations = ["1A","1B"]
+        sut.grid = [mediumShip]
+        let _ = try sut.fire("1A")
+        XCTAssertThrowsError(try sut.fire("1A"))
+    }
+    
     func testGameOver() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A"]

@@ -15,10 +15,12 @@ class Board {
     func fire(_ location: String) throws -> String {
         var output = "Miss"
         let location = try validateLocation(location.uppercased())
+        if fireLog[location] != nil { throw BattleShipsError.alreadyFiredHere }
         for (index, ship) in grid.enumerated() { if ship.locations.contains(location) {
             output = ship.hit(location)
             if output == "Sunk ship!" { grid.remove(at: index) }
         } }
+        fireLog[location] = output
         if grid.isEmpty { gameOver = true }
         return output
     }
@@ -62,15 +64,5 @@ class Board {
 enum BattleShipsError : Error {
     case slotTaken
     case locationError
-}
-
-extension BattleShipsError : LocalizedError {
-    var errorDescription: String? {
-        switch self {
-            case .slotTaken:
-                return NSLocalizedString("Slot is already in use", comment: "")
-            case .locationError:
-                return NSLocalizedString("Unable to create location", comment: "")
-        }
-    }
+    case alreadyFiredHere
 }
