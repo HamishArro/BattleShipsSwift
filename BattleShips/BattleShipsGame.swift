@@ -10,6 +10,8 @@ import Foundation
 class BattleShipsGame {
     var playerOneGrid: [Ship] = []
     var playerTwoGrid: [Ship] = []
+    var playerOneFireLog: [String: String] = [:]
+    var playerTwoFireLog: [String: String] = [:]
     var gameOver = false
     let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
     

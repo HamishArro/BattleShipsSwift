@@ -26,8 +26,13 @@ func playGame() {
     while !game.gameOver {
         print("Where would you like to fire?")
         getUserChoice()
-        game.gameOver = true
+        try getComputerChoice()
     }
+}
+
+func getComputerChoice() throws {
+    let result = try game.fire(randomLocation(), &game.playerOneGrid)
+    print("Enemy \(result)")
 }
 
 func getUserChoice() {
