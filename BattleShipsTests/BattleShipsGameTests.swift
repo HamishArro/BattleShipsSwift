@@ -20,26 +20,46 @@ class BattleShipsGameTests: XCTestCase {
         sut = nil
     }
     
+    func testGameOver() throws {
+        let mediumShip = Ship(name: "Rib", size: 2)
+        mediumShip.locations = ["1A", "2A"]
+        sut.playerTwoGrid = [mediumShip]
+        try sut.fire("1A", &sut.playerTwoGrid)
+        try sut.fire("2A", &sut.playerTwoGrid)
+        XCTAssertTrue(sut.gameOver)
+    }
+    
+    func testValidateLocation() {
+        XCTAssertEqual(try sut.validateLocation("1A"), "1A")
+    }
+    
+    func testValidateLocationError() {
+        XCTAssertThrowsError(try sut.validateLocation("21"))
+        XCTAssertThrowsError(try sut.validateLocation("2"))
+        XCTAssertThrowsError(try sut.validateLocation("asds"), "Invaild location", { (errorThrown) in
+                                XCTAssertEqual(errorThrown as? BattleShipsError, BattleShipsError.locationError)
+        })}
+    
     func testFireHit() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.playerTwoGrid = [mediumShip]
-        XCTAssertEqual(sut.fire("1A", &sut.playerTwoGrid), "Hit")
+        XCTAssertEqual(try sut.fire("1A", &sut.playerTwoGrid), "Hit")
     }
     
-    func testFireSink() {
+    func testFireSink() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.playerTwoGrid = [mediumShip]
-        sut.fire("1A", &sut.playerTwoGrid)
-        XCTAssertEqual(sut.fire("1A", &sut.playerTwoGrid), "Sunk ship!")
+        try sut.fire("1A", &sut.playerTwoGrid)
+        XCTAssertEqual(try sut.fire("2A", &sut.playerTwoGrid), "Sunk ship!")
     }
     
     func testFireMiss() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.playerTwoGrid = [mediumShip]
-        XCTAssertEqual(sut.fire("3A", &sut.playerTwoGrid), "Miss")
+        XCTAssertEqual(try sut.fire("3A", &sut.playerTwoGrid), "Miss")
     }
     
     func testMakeLocationWhenNorth() {

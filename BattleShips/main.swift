@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 var game = BattleShipsGame()
 var ships = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
 var computerShips = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
@@ -14,21 +15,44 @@ print("Welcome to battle ships! Please enter your name to begin.")
 let name = String(readLine()!)
 print("Hello \(name), the rules are as follows.\n\n- Players take turns firing shots to attempt to hit the opponent's enemy ships. \n- On your turn, call out a number (1 - 8) and a letter (A - H) that identifies a row and column on your target grid. \n- You will be altered with a 'Hit' or 'Miss' depending on the outcome of the shot.\n")
 
-placeAllShips()
+//placeAllShips()
 computerChoice()
+for ship in game.playerTwoGrid {
+    print(ship.locations)
+}
+playGame()
 
-
-func computerChoice() {
-    for (index, ship) in computerShips.enumerated() {
-        randomPlace(ship, index)
+func playGame() {
+    while !game.gameOver {
+        print("Where would you like to fire?")
+        getUserChoice()
+        game.gameOver = true
     }
 }
 
-func randomPlace(_ ship: Ship, _ index: Int) {
+func getUserChoice() {
+    do { print(try game.fire(String(readLine()!), &game.playerTwoGrid))
+    } catch {
+        print("Invaild location, enter again.")
+        getUserChoice()
+    }
+}
+
+func computerChoice() {
+    for (index, ship) in computerShips.enumerated() {
+        computerPlace(ship, index)
+    }
+}
+
+func computerPlace(_ ship: Ship, _ index: Int) {
     do {
         ship.direction = Bool.random()
-        try game.placeShip(String(Int.random(in: 1...8)) + String(game.letterSet.randomElement()!), &computerShips[index], &game.playerTwoGrid)
-    } catch { randomPlace(ship, index) }
+        try game.placeShip(randomLocation(), &computerShips[index], &game.playerTwoGrid)
+    } catch { computerPlace(ship, index) }
+}
+
+func randomLocation() -> String {
+    return String(Int.random(in: 1...8)) + String(game.letterSet.randomElement()!)
 }
 
 func placeAllShips() {
@@ -53,14 +77,10 @@ func doPlace(_ index: Int) {
     do { try game.placeShip(String(readLine()!), &ships[index], &game.playerOneGrid)
     } catch BattleShipsError.slotTaken {
         print("Cannot place in slot that is in use, enter again.")
-        try doPlace(index)
+        doPlace(index)
     } catch BattleShipsError.locationError { print("Ship goes over the allowed boundary, enter again.")
-        try doPlace(index)
+        doPlace(index)
     } catch { print("Error. Try again.")
         doPlace(index)
     }
-}
-
-enum GameError: Error {
-    case doPlaceError
 }

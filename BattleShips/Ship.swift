@@ -12,6 +12,7 @@ class Ship {
     var size: Int!
     var direction: Bool?
     var locations: [String] = []
+    var damagedLocation: [String] = []
     var hits = 0
     
     init(name: String, size: Int) {
@@ -19,8 +20,12 @@ class Ship {
         self.size = size
     }
     
-    func hit() -> String {
+    func hit(_ location: String) -> String {
+        if let index = locations.firstIndex(of: location) {
+            locations.remove(at: index)
+            damagedLocation.append(location)
+        }
         self.hits += 1
-        return self.hits == size ? "Sunk ship!" : "Hit"
+        return locations.isEmpty ? "Sunk ship!" : "Hit"
     }
 }
