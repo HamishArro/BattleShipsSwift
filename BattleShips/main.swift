@@ -20,6 +20,7 @@ print("Hello \(name), the rules are as follows.\n\n- Players take turns firing s
 placeAllShips()
 computerChoice()
 playGame()
+print(!player.gameOver ? "Well done \(name), you've won!" : "Game over! Computer won!")
 
 func playGame() {
     while !computer.gameOver && !player.gameOver {
@@ -31,12 +32,15 @@ func playGame() {
 
 func getComputerChoice() {
     do { let result = try player.fire(randomLocation())
-    print("Enemy \(result)")
+        print("Enemy \(result)")
+        if result != "Miss" { getComputerChoice() }
     } catch { getComputerChoice() }
 }
 
 func getUserChoice() {
-    do { print(try computer.fire(String(readLine()!)))
+    do { let result = try computer.fire(String(readLine()!))
+        print(result)
+        if result != "Miss" { getUserChoice() }
     } catch {
         print("Invaild location, enter again.")
         getUserChoice()
