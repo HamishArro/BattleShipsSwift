@@ -13,7 +13,6 @@ class Ship {
     var direction: Bool?
     var locations: [String] = []
     var damagedLocation: [String] = []
-    var hits = 0
     
     init(name: String, size: Int) {
         self.name = name
@@ -25,7 +24,6 @@ class Ship {
             locations.remove(at: index)
             damagedLocation.append(location)
         }
-        self.hits += 1
         return locations.isEmpty ? "Sunk ship!" : "Hit"
     }
 }

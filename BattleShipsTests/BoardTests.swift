@@ -9,10 +9,10 @@ import XCTest
 @testable import BattleShips
 
 class BattleShipsGameTests: XCTestCase {
-    var sut: BattleShipsGame!
+    var sut: Board!
     
     override func setUpWithError() throws {
-        sut = BattleShipsGame()
+        sut = Board()
         continueAfterFailure = false
     }
 
@@ -23,9 +23,9 @@ class BattleShipsGameTests: XCTestCase {
     func testGameOver() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
-        sut.playerTwoGrid = [mediumShip]
-        try sut.fire("1A", &sut.playerTwoGrid)
-        try sut.fire("2A", &sut.playerTwoGrid)
+        sut.grid = [mediumShip]
+        try sut.fire("1A", &sut.grid)
+        try sut.fire("2A", &sut.grid)
         XCTAssertTrue(sut.gameOver)
     }
     
@@ -43,23 +43,23 @@ class BattleShipsGameTests: XCTestCase {
     func testFireHit() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
-        sut.playerTwoGrid = [mediumShip]
-        XCTAssertEqual(try sut.fire("1A", &sut.playerTwoGrid), "Hit")
+        sut.grid = [mediumShip]
+        XCTAssertEqual(try sut.fire("1A", &sut.grid), "Hit")
     }
     
     func testFireSink() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
-        sut.playerTwoGrid = [mediumShip]
-        try sut.fire("1A", &sut.playerTwoGrid)
-        XCTAssertEqual(try sut.fire("2A", &sut.playerTwoGrid), "Sunk ship!")
+        sut.grid = [mediumShip]
+        try sut.fire("1A", &sut.grid)
+        XCTAssertEqual(try sut.fire("2A", &sut.grid), "Sunk ship!")
     }
     
     func testFireMiss() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
-        sut.playerTwoGrid = [mediumShip]
-        XCTAssertEqual(try sut.fire("3A", &sut.playerTwoGrid), "Miss")
+        sut.grid = [mediumShip]
+        XCTAssertEqual(try sut.fire("3A", &sut.grid), "Miss")
     }
     
     func testMakeLocationWhenNorth() {
@@ -122,9 +122,9 @@ class BattleShipsGameTests: XCTestCase {
     func testPlaceShip() throws {
         var mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.direction = true
-        try sut.placeShip("1A", &mediumShip, &sut.playerTwoGrid)
-        XCTAssertEqual(sut.playerTwoGrid[0].name, mediumShip.name)
-        XCTAssertEqual(sut.playerTwoGrid[0].locations, ["1A","2A"])
+        try sut.placeShip("1A", &mediumShip, &sut.grid)
+        XCTAssertEqual(sut.grid[0].name, mediumShip.name)
+        XCTAssertEqual(sut.grid[0].locations, ["1A","2A"])
     }
 
 }
