@@ -7,7 +7,9 @@
 
 import Foundation
 
-var game = BattleShipsGame()
+var player = Board()
+var computer = Board()
+
 var ships = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
 var computerShips = [Ship(name: "Destroyer", size: 2), Ship(name: "Submarine", size: 3), Ship(name: "Cruiser", size: 3), Ship(name: "Battleship", size: 4), Ship(name: "Carrier", size: 5)]
 
@@ -17,13 +19,13 @@ print("Hello \(name), the rules are as follows.\n\n- Players take turns firing s
 
 //placeAllShips()
 computerChoice()
-for ship in game.playerTwoGrid {
+for ship in computer.grid {
     print(ship.locations)
 }
 playGame()
 
 func playGame() {
-    while !game.gameOver {
+    while !computer.gameOver && !player.gameOver {
         print("Where would you like to fire?")
         getUserChoice()
         try getComputerChoice()
@@ -31,13 +33,13 @@ func playGame() {
 }
 
 func getComputerChoice() throws {
-    let result = try game.fire(randomLocation(), &game.playerOneGrid)
+    let result = try player.fire(randomLocation())
     print("Enemy \(result)")
 }
 
 func getUserChoice() {
-    do { print(try game.fire(String(readLine()!), &game.playerTwoGrid))
-    } catch {
+    do { print(try computer.fire(String(readLine()!)))
+    } catch
         print("Invaild location, enter again.")
         getUserChoice()
     }
@@ -52,7 +54,7 @@ func computerChoice() {
 func computerPlace(_ ship: Ship, _ index: Int) {
     do {
         ship.direction = Bool.random()
-        try game.placeShip(randomLocation(), &computerShips[index], &game.playerTwoGrid)
+        try computer.placeShip(randomLocation(), &computerShips[index])
     } catch { computerPlace(ship, index) }
 }
 
@@ -79,7 +81,7 @@ func getDriection(_ ship: Ship) {
 }
 
 func doPlace(_ index: Int) {
-    do { try game.placeShip(String(readLine()!), &ships[index], &game.playerOneGrid)
+    do { try player.placeShip(String(readLine()!), &ships[index])
     } catch BattleShipsError.slotTaken {
         print("Cannot place in slot that is in use, enter again.")
         doPlace(index)

@@ -24,8 +24,8 @@ class BattleShipsGameTests: XCTestCase {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.grid = [mediumShip]
-        try sut.fire("1A", &sut.grid)
-        try sut.fire("2A", &sut.grid)
+        try sut.fire("1A")
+        try sut.fire("2A")
         XCTAssertTrue(sut.gameOver)
     }
     
@@ -44,22 +44,22 @@ class BattleShipsGameTests: XCTestCase {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.grid = [mediumShip]
-        XCTAssertEqual(try sut.fire("1A", &sut.grid), "Hit")
+        XCTAssertEqual(try sut.fire("1A"), "Hit")
     }
     
     func testFireSink() throws {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.grid = [mediumShip]
-        try sut.fire("1A", &sut.grid)
-        XCTAssertEqual(try sut.fire("2A", &sut.grid), "Sunk ship!")
+        try sut.fire("1A")
+        XCTAssertEqual(try sut.fire("2A"), "Sunk ship!")
     }
     
     func testFireMiss() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.locations = ["1A", "2A"]
         sut.grid = [mediumShip]
-        XCTAssertEqual(try sut.fire("3A", &sut.grid), "Miss")
+        XCTAssertEqual(try sut.fire("3A"), "Miss")
     }
     
     func testMakeLocationWhenNorth() {
@@ -94,7 +94,7 @@ class BattleShipsGameTests: XCTestCase {
     func testCheckOnEmptyGrid() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.direction = true
-        XCTAssertEqual(try sut.checkLocations("1A", mediumShip, []), ["1A", "2A"])
+        XCTAssertEqual(try sut.checkLocations("1A", mediumShip), ["1A","2A"])
     }
     
     func testPlaceOnTakenSlots() throws {
@@ -102,27 +102,28 @@ class BattleShipsGameTests: XCTestCase {
         mediumShip.locations = ["1A", "2A"]
         let smallShip = Ship(name: "Dingy", size: 1)
         smallShip.direction = false
-        XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]))
-        XCTAssertThrowsError(try sut.checkLocations("1A", smallShip, [mediumShip]), "Slot is already in use", { (errorThrown) in
+        sut.grid = [mediumShip]
+        XCTAssertThrowsError(try sut.checkLocations("1A", smallShip))
+        XCTAssertThrowsError(try sut.checkLocations("1A", smallShip), "Slot is already in use", { (errorThrown) in
                                 XCTAssertEqual(errorThrown as? BattleShipsError, BattleShipsError.slotTaken)})
     }
     
     func testCheckEdgeNorth() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.direction = true
-        XCTAssertEqual(try sut.checkLocations("7A", mediumShip, []), ["7A", "8A"])
+        XCTAssertEqual(try sut.checkLocations("7A", mediumShip), ["7A","8A"])
     }
     
     func testCheckEdgeEast() {
         let mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.direction = false
-        XCTAssertEqual(try sut.checkLocations("1G", mediumShip, []), ["1G", "1H"])
+        XCTAssertEqual(try sut.checkLocations("1G", mediumShip), ["1G","1H"])
     }
     
     func testPlaceShip() throws {
         var mediumShip = Ship(name: "Rib", size: 2)
         mediumShip.direction = true
-        try sut.placeShip("1A", &mediumShip, &sut.grid)
+        try sut.placeShip("1A", &mediumShip)
         XCTAssertEqual(sut.grid[0].name, mediumShip.name)
         XCTAssertEqual(sut.grid[0].locations, ["1A","2A"])
     }

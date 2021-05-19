@@ -13,7 +13,7 @@ class Board {
     var gameOver = false
     let letterSet = ["A", "B", "C", "D", "E", "F", "G", "H"]
     
-    func fire(_ location: String, _ grid: inout [Ship]) throws -> String {
+    func fire(_ location: String) throws -> String {
         var output = "Miss"
         let location = try validateLocation(location.uppercased())
         for (index, ship) in grid.enumerated() { if ship.locations.contains(location) {
@@ -33,12 +33,12 @@ class Board {
         else {throw BattleShipsError.locationError }
     }
     
-    func placeShip(_ location: String, _ ship: inout Ship, _ grid: inout [Ship]) throws {
-        ship.locations = try checkLocations(location, ship, grid)
+    func placeShip(_ location: String, _ ship: inout Ship) throws {
+        ship.locations = try checkLocations(location, ship)
         grid.append(ship)
     }
     
-    func checkLocations(_ location: String, _ pendingShip: Ship, _ grid: [Ship]) throws -> [String] {
+    func checkLocations(_ location: String, _ pendingShip: Ship) throws -> [String] {
         var location = try validateLocation(location.uppercased())
         var locations: [String] = []
         var place = true
